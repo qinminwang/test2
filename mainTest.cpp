@@ -34,21 +34,38 @@ void TestSharedPtr()
     sp1->_next = sp2;
     sp2->_prev = sp1;
 }
+void taskwork(int a)
+{
+    cout<<"that is"<<a<<endl;
+}
+void TestpoolThread()
+{
+   threadPool thp(5);
+   for(int i = 0;i<10;i++)
+   {
+	auto funccc = [i](int a){cout<<"this is"<<a<<endl;};
+        thp.addTask([i](){cout<<"this is"<<i<<endl;});
+	auto *a = taskwork;
+        thp.addTask(funccc,22);
+	thp.addTask(&taskwork,11);
+   }
+}
 int main()
 {
-    TestSharedPtr();
-    int para = 5;
-    thread t1(hello_thread,para);
+    TestpoolThread();
+//    TestSharedPtr();
+//    int para = 5;
+//    thread t1(hello_thread,para);
      
-    for(int i= 0; i < 11; i++)
-    {
-	th1.signal();
-	sleep(1);
-	if(i >= 9)
-	    th1.setStop(true);
-    }
-    t1.join();
+//    for(int i= 0; i < 11; i++)
+//    {
+//	th1.signal();
+//	sleep(1);
+//	if(i >= 9)
+//	    th1.setStop(true);
+//    }
+//   t1.join();
 //    sleep(2);
-    cout<<"test process"<<endl;
+//    cout<<"test process"<<endl;
     return 0;
 }
