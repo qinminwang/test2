@@ -5,6 +5,7 @@
 #include"singleton.h"
 #include"smartPtr.h"
 #include"threadPool.h"
+#include"mulBigNumber.h"
 
 using namespace std;
 my_thread th1;
@@ -26,6 +27,14 @@ struct funct
     	cout<<"------"<<endl;
     }
 };
+void testmulBigNum()
+{
+    std::string a = "999";
+    std::string b = "999";
+    std::string c = "";
+    mulBigNumber(a,b,c);
+    std::cout<<c<<endl;
+}
 void TestSharedPtr()
 {
     funct<int> func;
@@ -52,7 +61,8 @@ void TestpoolThread()
 }
 int main()
 {
-    TestpoolThread();
+      testmulBigNum();
+//    TestpoolThread();
 //    TestSharedPtr();
 //    int para = 5;
 //    thread t1(hello_thread,para);
