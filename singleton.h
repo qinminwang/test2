@@ -15,3 +15,27 @@ private:
     int test_a;
     float test_b;	
 };
+
+class singleton
+{
+public:
+    struct data{int data;};
+    data* getInstance()
+    {
+	if(!_data)
+{
+	_mk.lock();
+	if(!_data)
+	{
+	    _data = new data();
+	}
+	_mk.unlock();
+}
+	return _data;
+    }
+private:
+    sigleton(){}
+    std::mutex _mk;
+    static data * _data;
+}
+singleton _data = nullptr;
